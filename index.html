@@ -45,6 +45,32 @@
     :root[data-theme="dark"] :is(a,button,input,summary):focus-visible{outline-color:#7ed6ef}
     @media(max-width:650px){.topbar-right{gap:8px}.theme-toggle{width:44px;padding:8px;flex-shrink:0}.theme-toggle-text{display:none}}
   </style>
+  <style>
+    .hero{position:relative;isolation:isolate;display:block;min-height:620px;padding:40px 32px;margin:28px 0 38px;border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink);overflow:hidden;background:var(--paper)}
+    .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--paper) 0%,color-mix(in srgb,var(--paper) 92%,transparent) 34%,transparent 59%);pointer-events:none}
+    .hero .hero-content{position:relative;max-width:47%;z-index:1}
+    .hero .hero-photo{position:absolute;inset:0;padding:0;margin:0;z-index:-2;animation:none}
+    .hero .hero-photo figure{height:100%;width:100%;border:0;box-shadow:none;transform:none;margin:0}
+    .hero .hero-photo img{object-fit:cover;object-position:right center}
+    .hero .photo-words{display:none}
+    .hero .sun-stamp{top:18px;right:18px}
+    .hero .photo-caption{bottom:20px;right:24px}
+    @media(max-width:950px) and (min-width:651px){.hero{padding:32px 25px}.hero .hero-content{max-width:48%}.hero .hero-subtitle{font-size:22px}}
+    @media(max-width:650px){
+      .hero{min-height:0;padding:258px 18px 26px;margin:20px 0 28px;box-shadow:5px 5px 0 var(--ink)}
+      .hero .hero-content{position:static;max-width:none;animation:none;transform:none}
+      .hero .hero-photo{bottom:auto;height:230px}
+      .hero::before{bottom:auto;height:230px;background:linear-gradient(90deg,color-mix(in srgb,var(--paper) 96%,transparent) 0%,color-mix(in srgb,var(--paper) 88%,transparent) 34%,transparent 60%)}
+      .hero h1{position:absolute;left:18px;top:25px;margin:0;font-size:60px;line-height:1.12;letter-spacing:0}
+      .hero h1 span{display:block}
+      .hero h1 span:last-child{margin-left:0}
+      .hero .sun-stamp{top:12px;right:12px;width:63px;height:63px}
+      .hero .sun-stamp b{font-size:24px}
+      .hero .sun-stamp span{font-size:15px}
+      .hero .photo-caption{bottom:12px;right:12px;font-size:14px;padding:4px 9px}
+    }
+    @media(max-width:369px){.hero h1{font-size:54px}}
+  </style>
 </head>
 <body id="top">
   <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
@@ -75,7 +101,7 @@
       </div>
       <div class="hero-photo reveal">
         <span class="hero-coordinate">22°59′52″N · 120°11′46″E</span>
-        <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Tainan_Shennong_St_1.jpg/1280px-Tainan_Shennong_St_1.jpg" alt="台南神農街的傳統老屋、燈籠與巷弄實景" width="1536" height="1024" fetchpriority="high"><figcaption class="photo-words"><span class="eyebrow">SLOW DAYS, WARM MEMORIES</span><p class="serif">我們的台南冒險，開始！</p></figcaption></figure>
+        <figure><img src="./images/cover.webp" alt="兩位朋友拿著地圖和小吃，在台南老街與海邊開啟週末冒險的原創漫畫插畫" width="1600" height="901" fetchpriority="high" decoding="async"><figcaption class="photo-words"><span class="eyebrow">SLOW DAYS, WARM MEMORIES</span><p class="serif">我們的台南冒險，開始！</p></figcaption></figure>
         <div class="sun-stamp" aria-label="兩天一夜"><b>2 天</b><span>1 夜</span></div>
         <div class="photo-caption"><span>✳</span> 全員集合！</div>
       </div>
@@ -120,7 +146,7 @@
     </section>
     <section class="closing wrap"><div class="small-star" aria-hidden="true">✳</div><h2 class="serif">冒險小隊，<br>下一個回憶一起收集！</h2><p>行程準備好了。<br>剩下的，就是全家一起出發。</p><button type="button" class="share-btn" data-share>把這趟冒險傳給家人 <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5"><use href="#i-share"/></svg></button></section>
   </main>
-  <footer class="footer wrap"><div class="footer-top"><a class="brand" href="#top"><span class="brand-mark">南</span><span class="brand-name">全家冒險小隊</span></a><span class="footer-note">冒險小隊專用・全家一起玩<br>台南冒險 · 兩天一夜</span></div><details class="credits"><summary>景點資訊與影像出處</summary><p>本站圖片透過 Wikimedia Commons 的外部連結載入，皆為台南實景照片；沒有上傳本機「材料」資料夾或其中的檔案。</p><p>行程時段為建議，交通依出發地與路況而異；住宿、餐飲與交通需自行安排。景點介紹參考 <a href="https://www.twtainan.net/zh-tw/district/0/" target="_blank" rel="noopener noreferrer">台南旅遊網</a>、<a href="https://twtainan.net/zh-tw/attractions/detail/1351/" target="_blank" rel="noopener noreferrer">神農街</a>、<a href="https://www.twtainan.net/zh-tw/attractions/detail/806/" target="_blank" rel="noopener noreferrer">安平樹屋</a>、<a href="https://www.twtainan.net/zh-tw/attractions/detail/5520/" target="_blank" rel="noopener noreferrer">漁光島</a>與<a href="https://www.twtainan.net/immersive/zh-tw/a-4-1/" target="_blank" rel="noopener noreferrer">大魚的祝福</a>，出遊前請確認最新公告。</p><p>老街全景：<a href="https://commons.wikimedia.org/wiki/File:Tainan_Shennong_St_1.jpg" target="_blank" rel="noopener noreferrer">Andrzej O</a>／<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>；花磚老屋：<a href="https://commons.wikimedia.org/wiki/File:Shennong_Street,_Tainan_-_TainanShennong5495.jpg" target="_blank" rel="noopener noreferrer">lumoplank</a>／<a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0</a>；漁光島：<a href="https://commons.wikimedia.org/wiki/File:漁光島沙灘.jpg" target="_blank" rel="noopener noreferrer">Guanting17</a>／<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>。照片由 Wikimedia Commons 提供縮圖，版面以裁切與色彩樣式呈現；CC BY-SA 照片衍生版本維持相同授權。</p></details></footer>
+  <footer class="footer wrap"><div class="footer-top"><a class="brand" href="#top"><span class="brand-mark">南</span><span class="brand-name">全家冒險小隊</span></a><span class="footer-note">冒險小隊專用・全家一起玩<br>台南冒險 · 兩天一夜</span></div><details class="credits"><summary>景點資訊與影像出處</summary><p>封面為 Imagegen 製作的原創冒險插畫，人物並非真實人物肖像；行程內的照片透過 Wikimedia Commons 外部連結載入。QR 碼使用指定的副本，其餘「材料」未上傳。</p><p>行程時段為建議，交通依出發地與路況而異；住宿、餐飲與交通需自行安排。景點介紹參考 <a href="https://www.twtainan.net/zh-tw/district/0/" target="_blank" rel="noopener noreferrer">台南旅遊網</a>、<a href="https://twtainan.net/zh-tw/attractions/detail/1351/" target="_blank" rel="noopener noreferrer">神農街</a>、<a href="https://www.twtainan.net/zh-tw/attractions/detail/806/" target="_blank" rel="noopener noreferrer">安平樹屋</a>、<a href="https://www.twtainan.net/zh-tw/attractions/detail/5520/" target="_blank" rel="noopener noreferrer">漁光島</a>與<a href="https://www.twtainan.net/immersive/zh-tw/a-4-1/" target="_blank" rel="noopener noreferrer">大魚的祝福</a>，出遊前請確認最新公告。</p><p>封面：Imagegen 原創插畫；花磚老屋：<a href="https://commons.wikimedia.org/wiki/File:Shennong_Street,_Tainan_-_TainanShennong5495.jpg" target="_blank" rel="noopener noreferrer">lumoplank</a>／<a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0</a>；漁光島：<a href="https://commons.wikimedia.org/wiki/File:漁光島沙灘.jpg" target="_blank" rel="noopener noreferrer">Guanting17</a>／<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>。照片由 Wikimedia Commons 提供縮圖，版面以裁切與色彩樣式呈現；CC BY-SA 照片衍生版本維持相同授權。</p></details></footer>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <dialog id="copy-dialog" class="copy-dialog"><h2 class="serif">把行程帶給家人</h2><p id="copy-help">長按選取下方行程，即可複製分享。網站上線後，也可以直接分享網址。</p><textarea id="share-text" readonly aria-labelledby="copy-help"></textarea><form method="dialog"><button class="share-btn">完成</button></form></dialog>
   <script>
