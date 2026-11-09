@@ -71,6 +71,12 @@
     }
     @media(max-width:369px){.hero h1{font-size:54px}}
   </style>
+  <style>
+    @media(prefers-reduced-motion:no-preference){
+      .stop.stop-enter{animation:stop-rise .55s cubic-bezier(.2,.7,.2,1) both}
+      @keyframes stop-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    }
+  </style>
 </head>
 <body id="top">
   <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
@@ -176,6 +182,27 @@
       let toastTimer;
       function notify(message) { const toast = document.getElementById('toast'); toast.textContent = message; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 2600); }
       const stops = [...document.querySelectorAll('[data-stop]')];
+      const stopMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const animatedStops = new WeakSet();
+      let stopMotionObserver;
+      function syncStopMotion() {
+        if (stopMotionObserver) stopMotionObserver.disconnect();
+        stops.forEach(stop => stop.classList.remove('stop-enter'));
+        if (stopMotionPreference.matches || !('IntersectionObserver' in window)) return;
+        stopMotionObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            stopMotionObserver.unobserve(entry.target);
+            if (animatedStops.has(entry.target)) return;
+            animatedStops.add(entry.target);
+            entry.target.classList.add('stop-enter');
+            entry.target.addEventListener('animationend', () => entry.target.classList.remove('stop-enter'), { once: true });
+          });
+        }, { threshold: .06, rootMargin: '0px 0px -24px 0px' });
+        stops.forEach(stop => { if (!animatedStops.has(stop)) stopMotionObserver.observe(stop); });
+      }
+      syncStopMotion();
+      if (stopMotionPreference.addEventListener) stopMotionPreference.addEventListener('change', syncStopMotion);
       function updateProgress() { document.getElementById('progress').textContent = `已收集 ${stops.filter(s => s.classList.contains('visited')).length} / 8 站`; }
       stops.forEach(stop => {
         const button = stop.querySelector('.visit-btn');
